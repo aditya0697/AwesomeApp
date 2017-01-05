@@ -1,16 +1,16 @@
 development:
   # Configure available database clients. (required)
+  # production:
   clients:
     # Defines the default client. (required)
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: test
+
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
-      options:
+       uri: 'mongodb://<admin>:<admin123>@ds145868.mlab.com:45868/simpledb'
+       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
         #   w: 1
@@ -24,10 +24,10 @@ development:
         #     - use: web
 
         # The name of the user for authentication.
-        # user: 'user'
+         user: 'admin'
 
         # The password of the user for authentication.
-        # password: 'password'
+         password: 'admin123'
 
         # The user's database roles.
         # roles:
@@ -69,7 +69,7 @@ development:
 
         # The time to wait to establish a connection before timing out, in seconds.
         # (default: 5)
-        # connect_timeout: 5
+         connect_timeout: 25
 
         # The timeout to wait to execute operations on a socket before raising an error.
         # (default: 5)
@@ -131,13 +131,3 @@ development:
     # environment. The Mongoid logger will be set to the Rails logger
     # otherwise.(default: :info)
     # log_level: :info
-test:
-  clients:
-    default:
-      database: awesome_app_test
-      hosts:
-        - localhost:27017
-      options:
-        read:
-          mode: :primary
-        max_pool_size: 1
